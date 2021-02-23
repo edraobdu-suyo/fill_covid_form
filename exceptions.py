@@ -1,0 +1,2 @@
+class InvalidFormType(Exception):
+    pass
