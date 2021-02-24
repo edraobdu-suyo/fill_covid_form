@@ -17,7 +17,10 @@ conditions = os.getenv('CONDITIONS_QUESTION', '')
 covid_test = os.getenv('COVID_TEST_RESULT', '')
 temperature = os.getenv('TEMPERATURE', '')
 
-printy('A continuación se presentarán una serie de preguntas, si esta pregunta ya contiene una respuesta, se mostrará entre paréntesis al final de la pregunta', 'y>')
+printy('''
+A continuación se presentarán una serie de preguntas, si esta pregunta ya contiene una respuesta, 
+se mostrará entre paréntesis al final de la pregunta. Presiona ENTER para mantener la respuesta anterior.
+''', 'y')
 
 new_email = inputy('Correo electrónico ([In>]{}@):\n'.format(escape_printy(email)), predefined='b>')
 

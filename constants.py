@@ -7,7 +7,6 @@ Constants to configure the browser
 # BROWSER_OPTIONS = ['-incognito', '--headless', 'disable-gpu']
 BROWSER_OPTIONS = ['-incognito']
 FORM_URL = 'https://forms.gle/Kp9EereJSibEqNAj6'
-DRIVER_PATH = '/home/edgar/Documents/Suyo/fill_covid_form/'
 
 # Form type options flags
 START_FLAG = '--start'

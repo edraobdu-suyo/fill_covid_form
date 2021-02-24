@@ -4,6 +4,7 @@ https://medium.com/swlh/automatically-filling-multiple-responses-into-a-google-f
 """
 import os
 import sys
+import pathlib
 
 from datetime import datetime
 from dotenv import load_dotenv
@@ -36,7 +37,7 @@ option = webdriver.ChromeOptions()
 for opt in BROWSER_OPTIONS:
     option.add_argument(opt)
 
-browser = webdriver.Chrome(executable_path=os.path.join(DRIVER_PATH, 'chromedriver'))
+browser = webdriver.Chrome(executable_path=os.path.join(pathlib.Path(__file__).parent.absolute(), 'webdriver'))
 browser.get(FORM_URL)
 
 # Elements
