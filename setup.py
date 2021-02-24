@@ -44,22 +44,22 @@ olfato, ha tenido diarrea o dolor estomacal, ha tenido contacto con
 alguna persona sospechosa para covid-19. *si - *no, amplié su respuesta en 
 caso de ser afirmativa alguna de las condiciones mencionadas: ([In>]{}@):
 '''.format(escape_printy(conditions)),
+    options=list(CONDITIONS_MAP.keys()),
     predefined='b>'
 )
+if new_conditions == 'Otro':
+    new_conditions = inputy('Especifique: ', predefined='c>')
 
-new_covid_test = inputy(
-    'Si se realizo prueba para Covid-19 en los últimos 8 días, cual fue el resultado ([In>]{}@):\n'.format(escape_printy(covid_test)),
-    predefined='b>',
-    options=list(COVID_TEST_RESULT_MAP.keys())
+new_temperature = inputy(
+    'Temperatura ([In>]{}@):\n'.format(escape_printy(temperature)),
+    options=list(TEMPERATURE_MAP.keys()),
+    predefined='b>'
 )
-
-new_temperature = inputy('Temperatura ([In>]{}@):\n'.format(escape_printy(temperature)), predefined='b>')
 
 # Establecemos las variables
 dotenv.set_key(env_file, 'EMAIL', new_email or email)
 dotenv.set_key(env_file, 'FULLNAME', new_full_name or full_name)
 dotenv.set_key(env_file, 'ID_NUMBER', new_id_number or id_number)
 dotenv.set_key(env_file, 'CITY', new_city or city)
-dotenv.set_key(env_file, 'CONDITIONS_QUESTION', new_conditions or conditions)
-dotenv.set_key(env_file, 'COVID_TEST_RESULT', new_covid_test or covid_test)
+dotenv.set_key(env_file, 'CONDITIONS', new_conditions or conditions)
 dotenv.set_key(env_file, 'TEMPERATURE', new_temperature or temperature)

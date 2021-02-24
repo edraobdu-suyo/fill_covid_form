@@ -14,7 +14,12 @@ from printy import printy
 
 from constants import *
 from exceptions import InvalidFormType
-from utils import get_city_radio_index, get_covid_test_result_index, escape_printy
+from utils import (
+    get_city_radio_index, 
+    get_conditions_index, 
+    get_temperature_index,
+    escape_printy
+)
 
 
 # Defines whether it's the form from the end of the 
@@ -47,11 +52,11 @@ nested_inputs = browser.find_elements_by_class_name('quantumWizTextinputSimplein
 
 now = datetime.now()
 
-# Email One
-email_one_input = inputs[EMAIL_ONE_IDX]
-email_one_value = os.getenv('EMAIL', None)
-if email_one_value is not None:
-    email_one_input.send_keys(email_one_value)
+# Email
+email_input = inputs[EMAIL_IDX]
+email_value = os.getenv('EMAIL', None)
+if email_value is not None:
+    email_input.send_keys(email_value)
 
 # Daily Report type
 if form_type == START_FLAG:
@@ -76,11 +81,6 @@ id_number_value = os.getenv('ID_NUMBER', None)
 if id_number_value is not None:
     id_number_input.send_keys(id_number_value)
 
-# Email Two
-email_two_input = inputs[EMAIL_TWO_IDX]
-email_two_value = os.getenv('EMAIL', None)
-if email_two_value is not None:
-    email_two_input.send_keys(email_one_value)
 
 # City
 city_value = os.getenv('CITY', None)
@@ -91,29 +91,27 @@ if city_value is not None:
     
     # In case it is the 'other' options
     # we send the value of the city
-    city_name_input = nested_inputs[OTHER_CITY_NAME_IDX]
-    city_name_input.send_keys(city_value)
+    if city_idx == OTHER_CITY_IDX:
+        city_name_input = nested_inputs[OTHER_CITY_NAME_IDX]
+        city_name_input.send_keys(city_value)
 
-# Conditions question
-condition_input = inputs[CONDITIONS_IDX]
-condition_value = os.getenv('CONDITIONS_QUESTION', None)
-if condition_value is not None:
-    condition_input.send_keys(condition_value)
+# Conditions
+conditions_value = os.getenv('CONDITIONS', None)
+if conditions_value is not None:
+    conditions_idx = get_conditions_index(conditions_value)
+    conditions_input = radiobuttons[conditions_idx]
+    conditions_input.click()
+    
+    # In case it is the 'other' options
+    # we send the value of the conditions
+    if conditions_idx == CONDITIONS_OTHER_IDX:
+        conditions_text_input = nested_inputs[CONDITIONS_TEXT_IDX]
+        conditions_text_input.send_keys(conditions_value)
 
-# Covid Test
-covid_test_value = os.getenv('COVID_TEST_RESULT', None)
-if covid_test_value is not None:
-    covid_test_idx = get_covid_test_result_index(covid_test_value)
-    covid_test_input = radiobuttons[covid_test_idx]
-    covid_test_input.click()
-
-temperature_input = inputs[TEMPERATURE_IDX]
+# Temperature
 temperature_value = os.getenv('TEMPERATURE', None)
 if temperature_value is not None:
-    temperature_input.send_keys(temperature_value)
+    temperature_idx = get_temperature_index(temperature_value)
+    temperature_input = radiobuttons[temperature_idx]
+    temperature_input.click()
 
-# Current hour
-inputs[HOURS_IDX].send_keys(str(now.hour))
-inputs[MINUTES_IDX].send_keys(str(now.minute))
-inputs[SECONDS_IDX].send_keys(str(now.second))
-    

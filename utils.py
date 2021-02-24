@@ -1,4 +1,11 @@
-from constants import CITIES_MAP, COVID_TEST_RESULT_MAP, OTHER_CITY_IDX, NO_COVID_RESULT_IDX
+from constants import (
+    CITIES_MAP, 
+    OTHER_CITY_IDX,
+    CONDITIONS_MAP,
+    CONDITIONS_OTHER_IDX,
+    TEMPERATURE_MAP,
+    TEMPERATURE_LOWER_IDX
+)
 
 def get_city_radio_index(city_name):
     """
@@ -13,17 +20,17 @@ def get_city_radio_index(city_name):
         return OTHER_CITY_IDX
 
 
-def get_covid_test_result_index(test_result):
-    """
-    Returns the radio index on the form for the specified 
-    covid test rresult.
-    """
+def get_conditions_index(conditions):
     try:
-        return COVID_TEST_RESULT_MAP[test_result]
-    except KeyError:
-        # City is not on the list
-        return NO_COVID_RESULT_IDX
+        return CONDITIONS_MAP[conditions]
+    except KeyError:        
+        return CONDITIONS_OTHER_IDX
 
+def get_temperature_index(temp):
+    try:
+        return TEMPERATURE_MAP[temp]
+    except KeyError:
+        return TEMPERATURE_LOWER_IDX
     
 def escape_printy(val):
     """
