@@ -9,10 +9,11 @@ from datetime import datetime
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from printy import printy
 
 from constants import *
 from exceptions import InvalidFormType
-from utils import get_city_radio_index, get_covid_test_result_index
+from utils import get_city_radio_index, get_covid_test_result_index, escape_printy
 
 
 # Defines whether it's the form from the end of the 
@@ -20,12 +21,12 @@ from utils import get_city_radio_index, get_covid_test_result_index
 try:
     form_type = sys.argv[1]
     if form_type not in FORM_TYPE_FLAGS:
-        raise InvalidFormType('\'{0}\' is not a valid form type, options are: {1}'.format(form_type, FORM_TYPE_FLAGS))
+        raise InvalidFormType('[m>]\'{0}\'@ is not a valid form type, options are: {1}'.format(form_type, escape_printy(FORM_TYPE_FLAGS)))
 except IndexError:
-    print('Please use the flags {0} to specify whether it\' the form of the begining of the day or the end of the day'.format(FORM_TYPE_FLAGS))
+    printy('Please use the flags [m>]{0}@ to specify whether it\' the form of the begining of the day or the end of the day'.format(escape_printy(FORM_TYPE_FLAGS)), predefined='r>')
     exit()
 except InvalidFormType as e:
-    print(e)
+    printy(e, predefined='r>')
     exit()    
 
 load_dotenv()

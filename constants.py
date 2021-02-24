@@ -41,3 +41,23 @@ NEGATIVE_COVID_RESULT_IDX = 10
 NO_COVID_RESULT_IDX = 11
 # Nested inputs, like the one in 'Other' city option
 OTHER_CITY_NAME_IDX = 0
+
+
+# It maps the city names on the form with the
+# radio button possition in the form
+CITIES_MAP = {
+    'Caceres': CACERES_CITY_IDX,
+    'Medellin': MEDELLIN_CITY_IDX,
+    'Bogota': BOGOTA_CITY_IDX,
+    'Barranquilla': BARRANQUILA_CITY_IDX,
+    'Tumaco': TUMACO_CITY_IDX,
+    'Caucasia': CAUCASIA_CITY_IDX,
+    'Otro': OTHER_CITY_IDX
+}
+
+
+COVID_TEST_RESULT_MAP = {
+    'Positivo': POSITIVE_COVID_RESULT_IDX,
+    'Negativo': NEGATIVE_COVID_RESULT_IDX,
+    'No aplica': NO_COVID_RESULT_IDX
+}

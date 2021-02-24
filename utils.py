@@ -1,27 +1,4 @@
-from constants import (
-    CACERES_CITY_IDX, MEDELLIN_CITY_IDX, BOGOTA_CITY_IDX,
-    BARRANQUILA_CITY_IDX, TUMACO_CITY_IDX, CAUCASIA_CITY_IDX, 
-    OTHER_CITY_IDX, POSITIVE_COVID_RESULT_IDX, NEGATIVE_COVID_RESULT_IDX,
-    NO_COVID_RESULT_IDX
-)
-
-# It maps the city names on the form with the
-# radio button possition in the form
-CITIES_MAP = {
-    'Caceres': CACERES_CITY_IDX,
-    'Medellin': MEDELLIN_CITY_IDX,
-    'Bogota': BOGOTA_CITY_IDX,
-    'Barranquilla': BARRANQUILA_CITY_IDX,
-    'Tumaco': TUMACO_CITY_IDX,
-    'Caucasia': CAUCASIA_CITY_IDX
-}
-
-
-COVID_TEST_RESULT_MAP = {
-    'Positivo': POSITIVE_COVID_RESULT_IDX,
-    'Negativo': NEGATIVE_COVID_RESULT_IDX,
-    'No aplica': NO_COVID_RESULT_IDX
-}
+from constants import CITIES_MAP, COVID_TEST_RESULT_MAP, OTHER_CITY_IDX, NO_COVID_RESULT_IDX
 
 def get_city_radio_index(city_name):
     """
@@ -46,3 +23,10 @@ def get_covid_test_result_index(test_result):
     except KeyError:
         # City is not on the list
         return NO_COVID_RESULT_IDX
+
+    
+def escape_printy(val):
+    """
+    Takes a value that its gonna be inserted into teh printy function and scape it
+    """
+    return str(val).replace('[', '\[').replace(']', '\]').replace('@', '\@')
