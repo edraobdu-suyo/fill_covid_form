@@ -20,7 +20,7 @@ requirements.txt
     pip install requirements.txt
     ```
 
-2. Descarga el WebDriver de acuerdo a tu navegador de preferencia y versión del mismo. El
+2. Descarga el WebDriver para Google Chrome de acuerdo a su versión. El
     actual repositorio contiene el WebDriver para Google Chrome versión `88.0.4324`, llamado `webdriver`. Es importante que el archivo que descarges sea guardado en la raíz del repositorio y cuyo nombre sea siempre `webdriver`.
 
     link para webdrivers de Google Chrome: https://chromedriver.chromium.org/downloads
