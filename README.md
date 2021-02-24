@@ -1,6 +1,11 @@
 # AUTO DILIGENCIAMIENTO FORMULARIO COVID
 
-## CONFIGURACIÓN
+## Demostración
+
+https://www.loom.com/share/8519d64d30614339abaf9f73c2674fee
+
+## Configuración
+
 Una vez el repositorio ha sido clonado:
 
 1. Crea un entorno virtual e instalas las dependencias listadas en el archivo
@@ -12,6 +17,7 @@ requirements.txt
     source fill_form/bin/activate
 
     cd ~/path_to_the_cloned_repo
+    pip install requirements.txt
     ```
 
 2. Descarga el WebDriver de acuerdo a tu navegador de preferencia y versión del mismo. El
