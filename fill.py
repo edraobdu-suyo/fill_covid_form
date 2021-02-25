@@ -114,4 +114,3 @@ if temperature_value is not None:
     temperature_idx = get_temperature_index(temperature_value)
     temperature_input = radiobuttons[temperature_idx]
     temperature_input.click()
-
